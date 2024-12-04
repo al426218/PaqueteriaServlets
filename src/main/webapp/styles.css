@@ -1,0 +1,22 @@
+h1 {
+    color: blue;
+}
+
+table{
+    align-content: center;
+    margin: 0 auto;
+    text-align: left;
+}
+
+img{
+    display:block;
+    width: 80%;
+    margin:auto;
+}
+ul{
+    align-items: flex-start;
+}
+li {
+    padding: 0; /* Elimina espacio interno en los elementos de la lista */
+    margin: 0; /* Elimina espacio externo en los elementos de la lista */
+}
