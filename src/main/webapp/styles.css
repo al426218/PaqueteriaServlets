@@ -1,11 +1,18 @@
 h1 {
     color: blue;
+
+}
+div{
+    text-align: center;
 }
 
 table{
     align-content: center;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
+}
+tr{
+    align-content: center;
 }
 
 img{
