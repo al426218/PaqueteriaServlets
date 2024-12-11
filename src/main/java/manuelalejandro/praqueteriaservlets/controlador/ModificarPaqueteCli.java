@@ -8,21 +8,27 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import jakarta.servlet.ServletException;
 import manuelalejandro.praqueteriaservlets.modelo.GestorPaquetes;
-import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 
-@WebServlet(name = "ListaPauquetesCli", value = "/ListaPauquetesCli")
-public class ListaPauquetesCli extends HttpServlet {
+@WebServlet(name = "ModificarPaqueteCli", value = "/ModificarPaqueteCli")
+public class ModificarPaqueteCli extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtén el gestor de paquetes desde el contexto de la aplicación
         ServletContext contexto = getServletContext();
-        GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         String codcli = (String) contexto.getAttribute("codcli");
-        JSONArray paquetes = gestor.listaPaquetesCliente(codcli);
-        request.setAttribute("paquetes", paquetes);
+        GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
+        long codPaq = Long.parseLong(request.getParameter("codPaq"));
+        String CPOrigen = request.getParameter("CPOrigen").toString();
+        String CPDestino = request.getParameter("CPDestino").toString();
+        double peso = Double.parseDouble(request.getParameter("peso"));
 
-        RequestDispatcher vista = request.getRequestDispatcher("Cliente/ListarPaquetesCliente.jsp");
+        JSONObject paquete = gestor.modificaPaquete(codcli,codPaq, CPOrigen, CPDestino, peso);
+        request.setAttribute("paquete", paquete);
+        request.setAttribute("codcli", codcli);
+
+        RequestDispatcher vista = request.getRequestDispatcher("Cliente/PaqueteModificadoCli.jsp");
         vista.forward(request, response);
     }
 
