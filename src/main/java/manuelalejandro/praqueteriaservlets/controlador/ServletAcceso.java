@@ -24,7 +24,6 @@ public class ServletAcceso extends HttpServlet {
         contexto.setAttribute("codcli", codcli);
         contexto.setAttribute("gestor", gestor);
 
-//        request.setAttribute("ruta", request.getContextPath());
         // Redirige al menú correspondiente según el tipo
         if ("cliente".equals(tipo)) {
             RequestDispatcher vista = request.getRequestDispatcher("menuClientes.html");

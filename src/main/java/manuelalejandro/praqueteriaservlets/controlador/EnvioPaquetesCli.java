@@ -28,7 +28,7 @@ public class EnvioPaquetesCli extends HttpServlet {
         request.setAttribute("codcli", codcli);
 
 
-        RequestDispatcher vista = request.getRequestDispatcher("Cliente/PaqueteEnviadoCli.jsp");
+        RequestDispatcher vista = request.getRequestDispatcher("PaqueteEnviadoCli.jsp");
         vista.forward(request, response);
     }
 

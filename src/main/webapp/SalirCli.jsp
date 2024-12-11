@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <img src="../img.png" alt="PaqueteriaServlets" >
+    <img src="img.png" alt="PaqueteriaServlets" >
     <%
         String codcli = (String) request.getAttribute("codcli");
     %>

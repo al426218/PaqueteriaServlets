@@ -23,7 +23,7 @@ public class RetiraPaqueteCli extends HttpServlet {
         JSONObject paquete = gestor.retiraPaquete(codcli, codpaquete);
         request.setAttribute("paquete", paquete);
         request.setAttribute("codcli", codcli);
-        RequestDispatcher vista = request.getRequestDispatcher("Cliente/PaqueteRetiradoCli.jsp");
+        RequestDispatcher vista = request.getRequestDispatcher("PaqueteRetiradoCli.jsp");
         vista.forward(request, response);
     }
 

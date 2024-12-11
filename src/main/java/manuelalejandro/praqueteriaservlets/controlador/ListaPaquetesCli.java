@@ -11,8 +11,8 @@ import manuelalejandro.praqueteriaservlets.modelo.GestorPaquetes;
 import org.json.simple.JSONArray;
 
 
-@WebServlet(name = "ListaPauquetesCli", value = "/ListaPauquetesCli")
-public class ListaPauquetesCli extends HttpServlet {
+@WebServlet(name = "ListaPaquetesCli", value = "/ListaPaquetesCli")
+public class ListaPaquetesCli extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtén el gestor de paquetes desde el contexto de la aplicación
@@ -22,7 +22,7 @@ public class ListaPauquetesCli extends HttpServlet {
         JSONArray paquetes = gestor.listaPaquetesCliente(codcli);
         request.setAttribute("paquetes", paquetes);
 
-        RequestDispatcher vista = request.getRequestDispatcher("Cliente/ListarPaquetesCliente.jsp");
+        RequestDispatcher vista = request.getRequestDispatcher("ListarPaquetesCli.jsp");
         vista.forward(request, response);
     }
 

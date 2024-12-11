@@ -25,10 +25,14 @@ public class ModificarPaqueteCli extends HttpServlet {
         double peso = Double.parseDouble(request.getParameter("peso"));
 
         JSONObject paquete = gestor.modificaPaquete(codcli,codPaq, CPOrigen, CPDestino, peso);
-        request.setAttribute("paquete", paquete);
-        request.setAttribute("codcli", codcli);
-
-        RequestDispatcher vista = request.getRequestDispatcher("Cliente/PaqueteModificadoCli.jsp");
+        String mensaje = "";
+        if (paquete.isEmpty()){
+            mensaje = "Hola, "+ codcli + ", ha habido un error al modificar el paquete.";
+        }else{
+            mensaje = "Enhorabuena, "+ codcli + ", has modificado el paquete con código: " + codPaq;
+        }
+        request.setAttribute("mensaje", mensaje);
+        RequestDispatcher vista = request.getRequestDispatcher("PaqueteModificadoCli.jsp");
         vista.forward(request, response);
     }
 
