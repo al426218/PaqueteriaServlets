@@ -21,8 +21,13 @@ public class RetiraPaqueteCli extends HttpServlet {
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         long codpaquete = Long.parseLong(request.getParameter("codPaquete"));
         JSONObject paquete = gestor.retiraPaquete(codcli, codpaquete);
-        request.setAttribute("paquete", paquete);
-        request.setAttribute("codcli", codcli);
+        String mensaje = "";
+        if (paquete.isEmpty()){
+            mensaje = "Hola, "+ codcli + ", ha habido un error al modificar el paquete.";
+        }else{
+            mensaje = "Enhorabuena, "+ codcli + ", has modificado el paquete con código: " + codpaquete;
+        }
+        request.setAttribute("mensaje", mensaje);
         RequestDispatcher vista = request.getRequestDispatcher("PaqueteRetiradoCli.jsp");
         vista.forward(request, response);
     }

@@ -12,7 +12,8 @@ import org.json.simple.JSONObject;
 
 
 @WebServlet(name = "EnvioPaquetesCli", value = "/EnvioPaquetesCli")
-public class EnvioPaquetesCli extends HttpServlet {
+public class
+EnvioPaquetesCli extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtén el gestor de paquetes desde el contexto de la aplicación

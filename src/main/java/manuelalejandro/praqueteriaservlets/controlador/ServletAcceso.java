@@ -19,8 +19,8 @@ public class ServletAcceso extends HttpServlet {
         ServletContext contexto = getServletContext();
         GestorPaquetes gestor = new GestorPaquetes();
 
-        String tipo = request.getParameter("tipo").toString();
-        String codcli = request.getParameter("codcli").toString();
+        String tipo = request.getParameter("tipo");
+        String codcli = request.getParameter("codcli");
         contexto.setAttribute("codcli", codcli);
         contexto.setAttribute("gestor", gestor);
 
