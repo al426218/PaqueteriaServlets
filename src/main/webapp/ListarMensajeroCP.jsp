@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Formulario Mensajero listar paquetes</title>
@@ -7,6 +7,11 @@
 </head>
 <body>
 <img src="img.png" alt="PaqueteriaServlets" >
+<%  String codcli = (String) session.getAttribute("codcli");
+  if(codcli == null){%>
+<h2>Ha habido un error al cargar la pagina</h2>
+<li><a href="index.html">Volver al home</a></li>
+<% }else{%>
 <h1>Formulario listar paquetes</h1>
 <form  action="ListaPaquetesMensajeros" method="GET">
   <table>
@@ -17,5 +22,6 @@
     <tr><td colspan="4"><input type="submit" value="Listar Paquetes"></td></tr>
   </table>
 </form>
+<%}%>
 </body>
 </html>

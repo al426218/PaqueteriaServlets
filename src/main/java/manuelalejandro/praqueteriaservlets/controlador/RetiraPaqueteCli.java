@@ -19,20 +19,13 @@ public class RetiraPaqueteCli extends HttpServlet {
         ServletContext contexto = getServletContext();
         HttpSession session = request.getSession(false);
         String codcli = (String) session.getAttribute("codcli");
+
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
-        if ( request.getParameter("codPaquete")!=null){
-            long codpaq= Long.parseLong(request.getParameter("codPaquete"));
-            JSONObject paquete = gestor.retiraPaquete(codcli, codpaq);
-            request.setAttribute("paquete", paquete);
-        }else{
-            request.setAttribute("paquete", new JSONObject());
-        }
+        long codpaquete = Long.parseLong(request.getParameter("codPaquete"));
+        
+        JSONObject paquete = gestor.retiraPaquete(codcli, codpaquete);
+        request.setAttribute("paquete", paquete);
         RequestDispatcher vista = request.getRequestDispatcher("PaqueteRetiradoCli.jsp");
         vista.forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

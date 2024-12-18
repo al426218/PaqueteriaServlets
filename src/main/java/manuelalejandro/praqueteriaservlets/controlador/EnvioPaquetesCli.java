@@ -12,18 +12,13 @@ import org.json.simple.JSONObject;
 
 
 @WebServlet(name = "EnvioPaquetesCli", value = "/EnvioPaquetesCli")
-public class
-EnvioPaquetesCli extends HttpServlet {
+public class EnvioPaquetesCli extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        // Validar la sesión y el código del cliente
+        // Obtener Codcli
         ServletContext contexto = getServletContext();
         String codcli = (String) session.getAttribute("codcli");
-        if (codcli == null) {
-            response.sendRedirect("index.html");
-            return;
-        }
         // Intentar obtener el gestor de paquetes
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         // Validar los parámetros obligatorios
@@ -34,11 +29,6 @@ EnvioPaquetesCli extends HttpServlet {
         request.setAttribute("paquete", paquete);
         RequestDispatcher vista = request.getRequestDispatcher("PaqueteEnviadoCli.jsp");
         vista.forward(request, response);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

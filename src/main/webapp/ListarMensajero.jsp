@@ -1,14 +1,7 @@
 <%@ page import="org.json.simple.JSONArray" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Manu
-  Date: 07/12/2024
-  Time: 13:47
-  To change this template use File | Settings | File Templates.
---%>
-<!DOCTYPE html>
-<html lang="es">
+
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Listar paquetes enviados</title>
@@ -21,7 +14,6 @@
   <ul>
 
     <%
-
       JSONArray paquetes = (JSONArray) request.getAttribute("paquetes");
       if (paquetes == null || paquetes.isEmpty()) {
     %>

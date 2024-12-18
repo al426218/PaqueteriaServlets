@@ -1,4 +1,3 @@
-<%@ page import="manuelalejandro.praqueteriaservlets.modelo.GestorPaquetes" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,6 +7,11 @@
 <body>
 <div>
   <img src="img.png" alt="PaqueteriaServlets" >
+  <%  String codcli = (String) session.getAttribute("codcli");
+    if(codcli == null){%>
+    <h2>Ha habido un error al cargar la pagina</h2>
+    <li><a href="index.html">Volver al home</a></li>
+  <% }else{%>
   <h2>Formulario de envío de paquetes</h2>
   <form  action="EnvioPaquetesCli" method="GET">
     <table>
@@ -24,6 +28,7 @@
       <tr><td colspan="4"><input type="submit" value="Enviar Paquete"></td></tr>
     </table>
   </form>
+  <%}%>
 </div>
 </body>
 </html>

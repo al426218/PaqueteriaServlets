@@ -22,8 +22,8 @@ public class ModificarPaqueteCli extends HttpServlet {
         String codcli = (String) session.getAttribute("codcli");
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         long codPaq = Long.parseLong(request.getParameter("codPaq"));
-        String CPOrigen = request.getParameter("CPOrigen").toString();
-        String CPDestino = request.getParameter("CPDestino").toString();
+        String CPOrigen = request.getParameter("CPOrigen");
+        String CPDestino = request.getParameter("CPDestino");
         double peso = Double.parseDouble(request.getParameter("peso"));
 
         JSONObject paquete = gestor.modificaPaquete(codcli,codPaq, CPOrigen, CPDestino, peso);
@@ -36,10 +36,5 @@ public class ModificarPaqueteCli extends HttpServlet {
         request.setAttribute("mensaje", mensaje);
         RequestDispatcher vista = request.getRequestDispatcher("PaqueteModificadoCli.jsp");
         vista.forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
