@@ -17,6 +17,10 @@ public class ListaPaquetesCli extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtén el gestor de paquetes desde el contexto de la aplicación
         HttpSession session = request.getSession(false);
+        if (session.getAttribute("codcli")!=null){
+            RequestDispatcher vista = request.getRequestDispatcher("index.html");
+            vista.forward(request, response);
+        }
         ServletContext contexto = getServletContext();
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         String codcli = (String) session.getAttribute("codcli");

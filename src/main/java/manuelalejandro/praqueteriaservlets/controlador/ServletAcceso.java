@@ -17,12 +17,15 @@ public class ServletAcceso extends HttpServlet {
         response.setContentType("text/html");
         // Recupero el contexto de la aplicacion
         ServletContext contexto = getServletContext();
-        GestorPaquetes gestor = new GestorPaquetes();
+        GestorPaquetes gestorcontexto= (GestorPaquetes) contexto.getAttribute("gestor");
+        if (gestorcontexto==null){
+            gestorcontexto = new GestorPaquetes();
+            contexto.setAttribute("gestor", gestorcontexto);
+        }
         HttpSession session = request.getSession();
         String tipo = request.getParameter("tipo");
         String codcli = request.getParameter("codcli");
         session.setAttribute("codcli", codcli);
-        contexto.setAttribute("gestor", gestor);
         // Redirige al menú correspondiente según el tipo
         if ("cliente".equals(tipo)) {
             RequestDispatcher vista = request.getRequestDispatcher("menuClientes.html");

@@ -21,7 +21,6 @@ EnvioPaquetesCli extends HttpServlet {
         ServletContext contexto = getServletContext();
         String codcli = (String) session.getAttribute("codcli");
         if (codcli == null) {
-            request.removeAttribute("codcli");
             RequestDispatcher vista = request.getRequestDispatcher("index.html");
             vista.forward(request, response);
             return;
@@ -31,14 +30,9 @@ EnvioPaquetesCli extends HttpServlet {
         // Validar los parámetros obligatorios
         String CPOrigen = request.getParameter("CPOrigen");
         String CPDestino = request.getParameter("CPDestino");
-        String pesoParam = request.getParameter("peso");
         double peso = Double.parseDouble(request.getParameter("peso"));
-
         JSONObject paquete = gestor.enviaPaquete(codcli, CPOrigen, CPDestino, peso);
         request.setAttribute("paquete", paquete);
-        request.setAttribute("codcli", codcli);
-
-
         RequestDispatcher vista = request.getRequestDispatcher("PaqueteEnviadoCli.jsp");
         vista.forward(request, response);
 
