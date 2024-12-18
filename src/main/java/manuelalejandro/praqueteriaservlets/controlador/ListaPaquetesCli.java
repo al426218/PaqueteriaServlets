@@ -22,7 +22,6 @@ public class ListaPaquetesCli extends HttpServlet {
         String codcli = (String) session.getAttribute("codcli");
         JSONArray paquetes = gestor.listaPaquetesCliente(codcli);
         request.setAttribute("paquetes", paquetes);
-
         RequestDispatcher vista = request.getRequestDispatcher("ListarPaquetesCli.jsp");
         vista.forward(request, response);
     }

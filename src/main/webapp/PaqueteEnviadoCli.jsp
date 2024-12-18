@@ -15,7 +15,7 @@
 <div>
 
   <%
-    String codcli = (String) request.getAttribute("codcli");
+    String codcli = (String) session.getAttribute("codcli");
     JSONObject paquete = (JSONObject) request.getAttribute("paquete");
   %>
   <img src="img.png" alt="PaqueteriaServlets" >
