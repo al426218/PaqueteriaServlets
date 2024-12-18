@@ -255,7 +255,7 @@ public class GestorPaquetes {
         Vector<Paquete> PaquetesCliente = mapa.get(codCliente);
         if (PaquetesCliente==null){
             System.out.println("No tienes paquetes a tu nombre");
-            return new JSONObject();
+            return null;
         }else{
             JSONObject devolver = new JSONObject();
             for(int i=0; i< PaquetesCliente.size();i++) {

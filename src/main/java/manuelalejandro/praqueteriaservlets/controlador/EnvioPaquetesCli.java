@@ -21,8 +21,7 @@ EnvioPaquetesCli extends HttpServlet {
         ServletContext contexto = getServletContext();
         String codcli = (String) session.getAttribute("codcli");
         if (codcli == null) {
-            RequestDispatcher vista = request.getRequestDispatcher("index.html");
-            vista.forward(request, response);
+            response.sendRedirect("index.html");
             return;
         }
         // Intentar obtener el gestor de paquetes

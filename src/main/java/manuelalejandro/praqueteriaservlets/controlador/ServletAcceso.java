@@ -1,6 +1,7 @@
 package manuelalejandro.praqueteriaservlets.controlador;
 
 import java.io.*;
+import java.util.logging.Logger;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -22,10 +23,14 @@ public class ServletAcceso extends HttpServlet {
             gestorcontexto = new GestorPaquetes();
             contexto.setAttribute("gestor", gestorcontexto);
         }
+        Logger logger = Logger.getLogger("ServletAcceso");
+        logger.info("Entro en servlet Acceso");
         HttpSession session = request.getSession();
         String tipo = request.getParameter("tipo");
         String codcli = request.getParameter("codcli");
         session.setAttribute("codcli", codcli);
+        logger.info("codcli"+session.getAttribute("codcli"));
+
         // Redirige al menú correspondiente según el tipo
         if ("cliente".equals(tipo)) {
             RequestDispatcher vista = request.getRequestDispatcher("menuClientes.html");

@@ -20,25 +20,10 @@
     <h2>No hay paquetes</h2>
 <%
     } else {
-        // Obtener los valores directamente del paquete
-        String codcli = (String) paquete.get("codcli");
-        long codpaquete = (long) paquete.get("codPaquete") ;
-        String codmensa = (String) paquete.get("codMensajero");
-        String CPDestino = (String) paquete.get("CPDestino");
-        String CPOrigen = (String) paquete.get("CPOrigen");
-        String fechaenv = (String) paquete.get("fechaEnvio");
-        String fecharecogida = (String) paquete.get("fechaRecogida");
-        double peso = (double) paquete.get("peso");
+
 %>
 <ul>
-    <li>Codcli: <%=codcli  %></li>
-    <li>Código del paquete: <%=codpaquete  %></li>
-    <li>CodMensajero: <%=codmensa  %></li>
-    <li>CPDestino: <%=CPDestino  %></li>
-    <li>CPOrigen: <%=CPOrigen  %></li>
-    <li>Fecha envio: <%=fechaenv  %></li>
-    <li>Fecha de recogida: <%=fecharecogida  %></li>
-    <li>Peso: <%=peso  %></li>
+    <li>Paquete retirado: <%=paquete%></li>
 </ul>
 <%
 
