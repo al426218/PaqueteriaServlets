@@ -14,7 +14,7 @@
 <body>
     <img src="img.png" alt="PaqueteriaServlets" >
     <%
-        String codcli = (String) request.getAttribute("codcli");
+            String codcli = (String) request.getAttribute("codcli");
     %>
 <h2>Hasta luego <%= codcli%></h2>
 <h3>Te estaremos esperando</h3>

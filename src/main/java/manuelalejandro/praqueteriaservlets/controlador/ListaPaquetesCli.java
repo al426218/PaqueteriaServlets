@@ -17,14 +17,12 @@ public class ListaPaquetesCli extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtén el gestor de paquetes desde el contexto de la aplicación
-        HttpSession session = request.getSession(false);
         ServletContext contexto = getServletContext();
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
+        HttpSession session = request.getSession(false);
         String codcli = (String) session.getAttribute("codcli");
-
         if (codcli == null) {
-            RequestDispatcher vista = request.getRequestDispatcher("");
-            vista.forward(request, response);
+            response.sendRedirect("index.html");
             return;
         }
         JSONArray paquetes = gestor.listaPaquetesCliente(codcli);

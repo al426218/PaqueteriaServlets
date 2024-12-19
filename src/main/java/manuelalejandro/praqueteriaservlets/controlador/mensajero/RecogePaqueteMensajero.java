@@ -20,6 +20,7 @@ public class RecogePaqueteMensajero extends HttpServlet {
         ServletContext contexto = getServletContext();
         HttpSession session = request.getSession(false);
         String codcli = (String) session.getAttribute("codcli");
+
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         long codPaq = Long.parseLong(request.getParameter("codPaq"));
         JSONObject paquete = gestor.recogePaquete(codPaq,codcli);

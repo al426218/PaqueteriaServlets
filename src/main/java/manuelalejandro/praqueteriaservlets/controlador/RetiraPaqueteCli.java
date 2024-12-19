@@ -19,7 +19,6 @@ public class RetiraPaqueteCli extends HttpServlet {
         ServletContext contexto = getServletContext();
         HttpSession session = request.getSession(false);
         String codcli = (String) session.getAttribute("codcli");
-
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
         long codpaquete = Long.parseLong(request.getParameter("codPaquete"));
         

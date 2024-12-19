@@ -16,7 +16,9 @@ public class ServletAcceso extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
         // Recupero el contexto de la aplicacion
         ServletContext contexto = getServletContext();
         GestorPaquetes gestorcontexto= (GestorPaquetes) contexto.getAttribute("gestor");
@@ -32,6 +34,7 @@ public class ServletAcceso extends HttpServlet {
 
         // Redirige al menú correspondiente según el tipo
         if ("cliente".equals(tipo)) {
+
             RequestDispatcher vista = request.getRequestDispatcher("menuClientes.html");
             vista.forward(request, response);
         } else if ("mensajero".equals(tipo)) {

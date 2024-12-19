@@ -21,6 +21,8 @@ public class SalirCli extends HttpServlet {
         // Invalidar la sesión si existe
         HttpSession session = request.getSession(false);
         if (session != null) {
+            String codcli= (String) session.getAttribute("codcli");
+            request.setAttribute("codcli",codcli);
             session.removeAttribute("codcli");
             gestor.guardaDatos();
             session.invalidate();
