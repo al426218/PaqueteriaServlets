@@ -26,20 +26,16 @@ public class ServletAcceso extends HttpServlet {
             gestorcontexto = new GestorPaquetes();
             contexto.setAttribute("gestor", gestorcontexto);
         }
-
         HttpSession session = request.getSession();
         String tipo = request.getParameter("tipo");
         String codcli = request.getParameter("codcli");
         session.setAttribute("codcli", codcli);
-
-        // Redirige al menú correspondiente según el tipo
         if ("cliente".equals(tipo)) {
+            response.sendRedirect("menuClientes.html");
 
-            RequestDispatcher vista = request.getRequestDispatcher("menuClientes.html");
-            vista.forward(request, response);
         } else if ("mensajero".equals(tipo)) {
-            RequestDispatcher vista = request.getRequestDispatcher("menuMensajeros.html");
-            vista.forward(request, response);
+            response.sendRedirect("menuMensajeros.html");
+
         }
 
     }

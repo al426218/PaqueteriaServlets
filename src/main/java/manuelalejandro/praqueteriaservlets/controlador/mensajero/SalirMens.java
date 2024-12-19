@@ -14,28 +14,17 @@ public class SalirMens extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext contexto = getServletContext();
-        HttpSession session = request.getSession(false);
-
         GestorPaquetes gestor = (GestorPaquetes) contexto.getAttribute("gestor");
-        String codcli = (String) session.getAttribute("codcli");
-        gestor.guardaDatos();
-        session.invalidate();
-        // Guardar datos antes de salir
-        // Limpiar cookies
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                cookie.setValue(null); // Borra el valor de la cookie
-                cookie.setMaxAge(0);  // Expira la cookie inmediatamente
-                cookie.setPath("/");  // Asegura que se elimine en toda la aplicación
-                response.addCookie(cookie); // Agrega la cookie actualizada al response
-            }
+        // Invalidar la sesión si existe
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String codcli= (String) session.getAttribute("codcli");
+            request.setAttribute("codMens", codcli);
+            session.removeAttribute("codcli");
+            gestor.guardaDatos();
+            session.invalidate();
         }
-
-        // Redirigir al JSP
-        request.setAttribute("codMens", codcli);
-        RequestDispatcher vista = request.getRequestDispatcher("SalirMens.jsp");
-        vista.forward(request, response);
+        response.sendRedirect("SalirMens.jsp");
     }
 
     @Override

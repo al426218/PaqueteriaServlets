@@ -9,6 +9,11 @@
 <img src="img.png" alt="PaqueteriaServlets" >
 
 <%
+
+  response.setContentType("text/html");
+  response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0");
+  response.setHeader("Pragma", "no-cache");
+  response.setDateHeader("Expires", 0);
   String codcli = (String) session.getAttribute("codcli");
   if (codcli == null) {
     response.sendRedirect("index.html");

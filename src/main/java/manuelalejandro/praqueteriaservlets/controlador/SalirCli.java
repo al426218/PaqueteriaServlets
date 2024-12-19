@@ -27,7 +27,10 @@ public class SalirCli extends HttpServlet {
             gestor.guardaDatos();
             session.invalidate();
         }
-
+        response.setContentType("text/html");
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
         RequestDispatcher vista = request.getRequestDispatcher("SalirCli.jsp");
         vista.forward(request, response);
     }
